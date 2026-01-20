@@ -61,9 +61,7 @@ dependencies {
 
     include(modImplementation("io.github.ollama4j:ollama4j:1.0.97")!!)
 
-    //needed deps for Gemini communication
-    include(modImplementation("com.google.cloud:google-cloud-aiplatform:3.54.0")!!)
-    
+    //needed deps for Jackson (used by Ollama and Gemini clients)
     include(modRuntimeOnly("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.2")!!)
     include(modImplementation("com.fasterxml.jackson.core:jackson-core:2.18.0")!!)
     include(modImplementation("com.fasterxml.jackson.core:jackson-annotations:2.18.0")!!)

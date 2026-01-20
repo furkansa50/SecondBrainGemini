@@ -6,8 +6,6 @@ import io.github.ollama4j.models.chat.OllamaChatMessageRole
 import me.sailex.secondbrain.llm.player2.model.Player2ChatMessage
 import me.sailex.secondbrain.llm.player2.model.Player2ResponseMessage
 import me.sailex.secondbrain.llm.roles.Player2ChatRole
-import com.google.cloud.vertexai.api.Content
-import com.google.cloud.vertexai.api.Part
 
 // player2
 fun Player2ResponseMessage.toMessage(): Message = Message(
@@ -31,28 +29,5 @@ fun Message.toOllamaChatMessage(): OllamaChatMessage = OllamaChatMessage(
     this.message
 )
 
-// gemini
-fun Message.toGeminiContent(): Content {
-    val part = Part.newBuilder().setText(this.message).build()
-    // Map roles: "system" and "user" -> "user", "assistant" and "model" -> "model"
-    val geminiRole = when (this.role.lowercase()) {
-        "system", "user" -> "user"
-        "assistant", "model" -> "model"
-        else -> "user"
-    }
-    return Content.newBuilder()
-        .setRole(geminiRole)
-        .addParts(part)
-        .build()
-}
-
-fun toGeminiContents(messages: List<Message>): List<Content> {
-    // Handle system messages separately as Gemini requires special handling
-    val systemMessages = messages.filter { it.role.lowercase() == "system" }
-    val otherMessages = messages.filter { it.role.lowercase() != "system" }
-    
-    // For now, prepend system messages as user messages
-    // In production, you might want to use GenerativeModel.Builder.systemInstruction()
-    val allMessages = systemMessages + otherMessages
-    return allMessages.map { it.toGeminiContent() }
-}
+// Note: Gemini message conversion is handled directly in GeminiClient.java
+// using REST API format, so no additional conversion functions are needed here
