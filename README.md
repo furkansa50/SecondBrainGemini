@@ -10,7 +10,7 @@ A Fabric mod that brings intelligent NPCs to your minecraft world. Create player
 ## Requirements
       
 - **Minecraft Version**: 1.20.1 (the latest version of this mod only supports 1.20.1 currently)
-- **Running Ollama server OR Player2 App OR an OpenAi Key**
+- **Running Ollama server OR Player2 App OR a Google Gemini API Key**
 
 ## Mod Installation
 
@@ -21,7 +21,7 @@ A Fabric mod that brings intelligent NPCs to your minecraft world. Create player
 3. **Launch Minecraft**:
    - Start the Minecraft client and the server, and you're ready!
 
-## Usage with Ollama/OpenAi
+## Usage with Ollama/Gemini
 
 >Note: Player must be an operator to execute the following commands
 
@@ -31,10 +31,10 @@ A Fabric mod that brings intelligent NPCs to your minecraft world. Create player
 
 
 ### ~~Commands (Deprecated)~~
->~~Warning: This command uses default ollama/openai settings!~~
+>~~Warning: This command uses default ollama/gemini settings!~~
 
 1. **~~Spawn NPCs~~**:
-   - ~~Use the `/secondbrain add <npcname> <openai|ollama>` (currently only ollama is supported) command to create an NPC. (Example: `/secondbrain add sailex428 OLLAMA)~~
+   - ~~Use the `/secondbrain add <npcname> <gemini|ollama>` (currently only ollama is supported) command to create an NPC. (Example: `/secondbrain add sailex428 OLLAMA)~~
 2. **~~Remove NPCs~~**:
    - ~~Use the `/secondbrain remove <npcname>` command to remove an NPC from the game world.~~
 
@@ -54,12 +54,15 @@ A Fabric mod that brings intelligent NPCs to your minecraft world. Create player
    - Use the gui to create/edit an NPC and put in the address to your ollama server (complete url with http://...; 
      if you're running your ollama on your local pc then you can just use the one that's already typed in)
 
-## Setup OpenAi (Paid)
+## Setup Gemini (Paid, with free tier)
 1. **Create API Key**
-   - Visit [OpenAi's website](https://platform.openai.com/api-keys), sign up/log in and create a API key
+   - Visit [Google AI Studio](https://aistudio.google.com/apikey), sign in with your Google account
+   - Click "Get API key" or "Create API key" button
    - Copy the created key
 2. **Use the Key in the mod**
-   - Open the GUI and create an NPC with the LLM Type `OPENAI` and paste key into the Key field. (The key wont be ever shared with any other clients that has access to the GUI, also not your client. It will be saved in a secondbrain config file on the server)
+   - Open the GUI and create an NPC with the LLM Type `GEMINI` and paste the key into the API Key field
+   - The key will be saved securely in a config file on the server and never shared with other clients
+   - Recommended models: `gemini-1.5-flash`, `gemini-1.5-pro`, or `gemini-2.0-flash-exp`
 
 ## Usage with Player2 App
 
