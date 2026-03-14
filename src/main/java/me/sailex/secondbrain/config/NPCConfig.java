@@ -17,7 +17,7 @@ public class NPCConfig implements Configurable {
 	private LLMType llmType = LLMType.OLLAMA;
 	private String ollamaUrl = "http://localhost:11434";
     private String llmModel = "llama3.2";
-	private String openaiApiKey = "";
+	private String geminiApiKey = "";
 	private String voiceId = "not set";
 	private String skinUrl = "";
 
@@ -37,7 +37,7 @@ public class NPCConfig implements Configurable {
 		LLMType llmType,
         String llmModel,
 		String ollamaUrl,
-		String openaiApiKey,
+		String geminiApiKey,
 		boolean isTTS,
 		String voiceId,
 		String skinUrl
@@ -49,7 +49,7 @@ public class NPCConfig implements Configurable {
 		this.llmType = llmType;
         this.llmModel = llmModel;
 		this.ollamaUrl = ollamaUrl;
-		this.openaiApiKey = openaiApiKey;
+		this.geminiApiKey = geminiApiKey;
 		this.isTTS = isTTS;
 		this.voiceId = voiceId;
 		this.skinUrl = skinUrl;
@@ -127,8 +127,8 @@ public class NPCConfig implements Configurable {
 		return ollamaUrl;
 	}
 
-	public String getOpenaiApiKey() {
-		return openaiApiKey;
+	public String getGeminiApiKey() {
+		return geminiApiKey;
 	}
 
 	public void setLlmCharacter(String llmCharacter) {
@@ -143,8 +143,8 @@ public class NPCConfig implements Configurable {
 		this.ollamaUrl = ollamaUrl;
 	}
 
-	public void setOpenaiApiKey(String openaiApiKey) {
-		this.openaiApiKey = openaiApiKey;
+	public void setGeminiApiKey(String geminiApiKey) {
+		this.geminiApiKey = geminiApiKey;
 	}
 
 	public void setActive(boolean active) {
@@ -201,7 +201,7 @@ public class NPCConfig implements Configurable {
 			Endec.forEnum(LLMType.class).fieldOf("llmType", NPCConfig::getLlmType),
             Endec.STRING.fieldOf("llmModel", NPCConfig::getLlmModel),
 			Endec.STRING.fieldOf("ollamaUrl", NPCConfig::getOllamaUrl),
-			Endec.STRING.fieldOf("openaiApiKey", NPCConfig::getOpenaiApiKey),
+			Endec.STRING.fieldOf("geminiApiKey", NPCConfig::getGeminiApiKey),
 			Endec.BOOLEAN.fieldOf("isTTS", NPCConfig::isTTS),
 			Endec.STRING.fieldOf("voiceId", NPCConfig::getVoiceId),
 			Endec.STRING.fieldOf("skinUrl", NPCConfig::getSkinUrl),
@@ -217,7 +217,7 @@ public class NPCConfig implements Configurable {
                 config.llmType,
                 config.llmModel,
                 config.ollamaUrl,
-                config.openaiApiKey,
+                config.geminiApiKey,
                 config.isTTS,
                 config.voiceId,
                 config.skinUrl
@@ -231,7 +231,7 @@ public class NPCConfig implements Configurable {
 				",isActive=" + isActive +
 				",llmType=" + llmType +
 				",ollamaUrl=" + ollamaUrl +
-				",openaiApiKey=***" +
+				",geminiApiKey=***" +
 				",llmCharacter=" + llmCharacter +
 				",voiceId=" + voiceId + "}";
 	}
@@ -243,6 +243,6 @@ public class NPCConfig implements Configurable {
 	public static final String LLM_TYPE = "Type";
     public static final String LLM_MODEL = "LLM Model";
 	public static final String OLLAMA_URL = "Ollama URL";
-	public static final String OPENAI_API_KEY = "OpenAI API Key";
+	public static final String GEMINI_API_KEY = "Gemini API Key";
 	public static final String IS_TTS = "Text to Speech";
 }
